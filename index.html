@@ -512,6 +512,9 @@ footer { background: #060F1E; padding: 60px 0 0; border-top: 1px solid rgba(201,
 }
 .mob-close:hover { color: var(--gold); }
 
+/* SP-only line break */
+.sp-br { display: none; }
+
 /* CTA BUTTONS — equal base sizing */
 .cta-btns .btn-gold { padding: 20px 48px; font-size: 16px; }
 
@@ -1155,8 +1158,8 @@ footer { background: #060F1E; padding: 60px 0 0; border-top: 1px solid rgba(201,
 <section class="cta-sec" id="cta">
   <div class="cta-inner">
     <div class="eyebrow center" style="color:var(--gold);justify-content:center">FREE CONSULTATION</div>
-    <h2>今すぐ、<em>無料相談</em>を予約する</h2>
-    <p>あなたの資産戦略、一度プロの目で見てみませんか？<br>60分の無料相談で、現状の課題と改善策を明確にします。</p>
+    <h2>今すぐ、<br class="sp-br"><em>無料相談</em>を予約する</h2>
+    <p>あなたの資産戦略、<br class="sp-br">一度プロの目で見てみませんか？<br>60分の無料相談で、<br class="sp-br">現状の課題と改善策を明確にします。</p>
     <div class="cta-btns">
       <a href="#" class="btn-gold">無料相談を予約する（60分）→</a>
       <a href="#" class="btn-outline-w">資料を請求する</a>
@@ -1215,6 +1218,7 @@ footer { background: #060F1E; padding: 60px 0 0; border-top: 1px solid rgba(201,
   header { padding: 0 20px; height: 60px; }
   nav { display: none; }
   .hamburger { display: flex; }
+  .sp-br { display: inline; }
 
   .hero { flex-direction: column; min-height: auto; padding-top: 60px; }
   .hero-right { position: relative; top: auto; width: 100%; height: 260px; }
