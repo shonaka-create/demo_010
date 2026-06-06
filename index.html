@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NEXUS FINANCE | 資産戦略コンサルティング</title>
+<title>LP制作デモ | 資産戦略コンサルティング</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;600;700&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -133,8 +133,8 @@ section { padding: 96px 0; }
 .container { max-width: 1160px; margin: 0 auto; padding: 0 48px; }
 .eyebrow {
   display: flex; align-items: center; gap: 10px;
-  font-family: var(--font-en); font-size: 11px; letter-spacing: 4px;
-  color: var(--gold); font-weight: 600; margin-bottom: 12px;
+  font-family: var(--font-en); font-size: 13px; letter-spacing: 4px;
+  color: var(--gold); font-weight: 700; margin-bottom: 12px;
 }
 .eyebrow::before { content:''; width: 28px; height: 1px; background: var(--gold); }
 .eyebrow.center { justify-content: center; }
@@ -214,8 +214,8 @@ section { padding: 96px 0; }
 .sol-card-body { padding: 26px 26px 30px; }
 .sol-chip {
   display: inline-block; background: rgba(201,168,76,.12); color: var(--gold);
-  font-size: 9px; letter-spacing: 2px; padding: 4px 12px; border-radius: 100px;
-  margin-bottom: 14px; font-family: var(--font-en);
+  font-size: 11px; letter-spacing: 2px; padding: 4px 12px; border-radius: 100px;
+  margin-bottom: 14px; font-family: var(--font-en); font-weight: 700;
 }
 .sol-card-body h3 { font-size: 19px; font-weight: 700; color: var(--white); margin-bottom: 10px; line-height: 1.4; }
 .sol-card-body p { font-size: 13px; color: rgba(255,255,255,.58); line-height: 1.8; }
@@ -254,7 +254,7 @@ section { padding: 96px 0; }
 .svc-img-lbl { font-size: 10px; letter-spacing: 1.5px; color: var(--gray-400); text-align: center; }
 .svc-img.dk .svc-img-lbl { color: rgba(255,255,255,.4); }
 .svc-body { padding: 56px 52px; display: flex; flex-direction: column; justify-content: center; }
-.svc-no { font-family: var(--font-en); font-size: 10px; color: var(--gold); letter-spacing: 4px; font-weight: 600; margin-bottom: 14px; }
+.svc-no { font-family: var(--font-en); font-size: 12px; color: var(--gold); letter-spacing: 4px; font-weight: 700; margin-bottom: 14px; }
 .svc-body h3 { font-family: var(--font-serif); font-size: 26px; font-weight: 700; color: var(--navy); margin-bottom: 18px; line-height: 1.45; }
 .svc-body p { font-size: 14px; color: var(--gray-600); line-height: 1.9; margin-bottom: 26px; }
 .svc-tags { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -339,7 +339,7 @@ section { padding: 96px 0; }
 /* CASE */
 .case-sec { background: var(--navy); }
 .case-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 22px; margin-top: 56px; }
-.case-card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; overflow: hidden; }
+.case-card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
 .case-img {
   height: 250px;
   background: linear-gradient(135deg,#1A3560,#0D2347);
@@ -353,10 +353,10 @@ section { padding: 96px 0; }
 .case-ph { display: flex; flex-direction: column; align-items: center; gap: 10px; opacity: .32; }
 .case-ph-icon { font-size: 44px; }
 .case-ph-lbl { color: var(--gold); font-size: 9px; letter-spacing: 2px; font-family: var(--font-en); }
-.case-body { padding: 26px 26px 30px; }
-.case-ind { font-size: 10px; color: var(--gold); letter-spacing: 2px; margin-bottom: 10px; font-family: var(--font-en); }
+.case-body { padding: 26px 26px 30px; flex: 1; display: flex; flex-direction: column; }
+.case-ind { font-size: 12px; color: var(--gold); letter-spacing: 2px; margin-bottom: 10px; font-family: var(--font-en); font-weight: 700; }
 .case-body h3 { font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 14px; line-height: 1.45; }
-.case-results { display: flex; gap: 22px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.08); }
+.case-results { display: flex; gap: 22px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.08); margin-top: auto; }
 .cr-val { font-family: var(--font-en); font-size: 22px; font-weight: 800; color: var(--gold); }
 .cr-lbl { font-size: 10px; color: rgba(255,255,255,.45); margin-top: 2px; }
 
@@ -393,7 +393,7 @@ section { padding: 96px 0; }
 .t-img-icon { font-size: 46px; }
 .t-img-lbl { font-size: 9px; letter-spacing: 1.5px; color: var(--gray-400); }
 .team-body { padding: 22px; }
-.t-role { font-size: 9px; color: var(--gold); letter-spacing: 2px; font-family: var(--font-en); font-weight: 600; margin-bottom: 5px; }
+.t-role { font-size: 11px; color: var(--gold); letter-spacing: 2.5px; font-family: var(--font-en); font-weight: 700; margin-bottom: 6px; }
 .t-name { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 7px; }
 .t-bio { font-size: 11px; color: var(--gray-600); line-height: 1.7; }
 
@@ -545,7 +545,6 @@ footer { background: #060F1E; padding: 60px 0 0; border-top: 1px solid rgba(201,
     </div>
   </a>
   <nav>
-    <a href="#problem">お悩み</a>
     <a href="#services">サービス</a>
     <a href="#case">実績</a>
     <a href="#about">私たちについて</a>
@@ -561,7 +560,6 @@ footer { background: #060F1E; padding: 60px 0 0; border-top: 1px solid rgba(201,
 <div class="mob-overlay" id="mobOverlay"></div>
 <nav class="mob-nav" id="mobNav">
   <button class="mob-close" id="mobClose" aria-label="閉じる">✕</button>
-  <a href="#problem">お悩み</a>
   <a href="#services">サービス</a>
   <a href="#case">実績</a>
   <a href="#about">私たちについて</a>
