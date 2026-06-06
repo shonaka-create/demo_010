@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXUS FINANCE | 資産戦略コンサルティング</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;600;700&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #0A1628; --navy-mid: #112240; --navy-light: #1A3560;
+  --gold: #C9A84C; --gold-light: #E2C97E; --gold-pale: #F5EDD5;
+  --white: #FFFFFF; --gray-100: #F8F9FC; --gray-200: #EEF1F7;
+  --gray-400: #A0AABD; --gray-600: #5A6478; --gray-800: #2D3545;
+  --font-sans: 'Noto Sans JP', sans-serif;
+  --font-serif: 'Noto Serif JP', serif;
+  --font-en: 'Inter', sans-serif;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-sans); color: var(--navy); background: var(--white); overflow-x: hidden; }
+
+/* HEADER */
+header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(10,22,40,0.96); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(201,168,76,0.2);
+  padding: 0 48px; height: 72px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.logo-mark {
+  width: 38px; height: 38px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  clip-path: polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-en); font-weight: 800; font-size: 15px; color: var(--navy);
+}
+.logo-name { color: var(--white); font-family: var(--font-en); font-weight: 700; font-size: 19px; letter-spacing: 2px; }
+.logo-sub { display: block; color: var(--gold); font-size: 8px; letter-spacing: 3px; margin-top: -2px; }
+nav { display: flex; align-items: center; gap: 32px; }
+nav a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 13px; letter-spacing: 0.3px; transition: color .2s; }
+nav a:hover { color: var(--gold); }
+.nav-cta {
+  background: linear-gradient(135deg,var(--gold),var(--gold-light));
+  color: var(--navy) !important; font-weight: 700; padding: 10px 22px;
+  border-radius: 4px; font-size: 13px !important;
+  transition: transform .2s, box-shadow .2s !important;
+}
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(201,168,76,.4); }
+
+/* HERO */
+.hero {
+  min-height: 100vh; background: var(--navy);
+  display: flex; align-items: center; padding-top: 72px; position: relative; overflow: hidden;
+}
+.hero-bg-grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(201,168,76,.04) 1px,transparent 1px),
+                    linear-gradient(90deg,rgba(201,168,76,.04) 1px,transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-glow {
+  position: absolute; width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,.08) 0%, transparent 70%);
+  top: 50%; right: 10%; transform: translateY(-50%);
+}
+.hero-right {
+  position: absolute; right: 0; top: 72px; bottom: 0; width: 50%; overflow: hidden;
+}
+.hero-photo {
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, #0D1E3A 0%, #1A3560 60%, #0A1628 100%);
+  display: flex; align-items: center; justify-content: center; position: relative;
+}
+.hero-photo::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to right, var(--navy) 0%, transparent 25%);
+  z-index: 1;
+}
+.hero-photo-inner {
+  position: relative; z-index: 0;
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
+  opacity: .35;
+}
+.photo-frame {
+  width: 80px; height: 80px; border: 2px solid var(--gold);
+  border-radius: 8px; display: flex; align-items: center; justify-content: center;
+  font-size: 36px;
+}
+.photo-label { color: var(--gold); font-size: 10px; letter-spacing: 2px; font-family: var(--font-en); text-align: center; }
+
+.hero-content { position: relative; z-index: 2; padding: 60px 80px; max-width: 640px; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(201,168,76,.12); border: 1px solid rgba(201,168,76,.35);
+  padding: 6px 18px; border-radius: 100px; margin-bottom: 28px;
+}
+.badge-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; animation: blink 2s infinite; }
+@keyframes blink { 0%,100%{opacity:1}50%{opacity:.4} }
+.badge-text { color: var(--gold); font-size: 11px; letter-spacing: 2.5px; font-family: var(--font-en); font-weight: 600; }
+.hero-en { font-family: var(--font-en); font-size: 12px; color: var(--gold); letter-spacing: 4px; margin-bottom: 14px; }
+.hero-h1 { font-family: var(--font-serif); font-size: 54px; line-height: 1.3; color: var(--white); font-weight: 700; margin-bottom: 24px; }
+.hero-h1 em { color: var(--gold); font-style: normal; }
+.hero-lead { color: rgba(255,255,255,.68); font-size: 16px; line-height: 1.95; margin-bottom: 44px; font-weight: 300; }
+.hero-kpis { display: flex; gap: 36px; padding: 24px 0; border-top: 1px solid rgba(255,255,255,.1); border-bottom: 1px solid rgba(255,255,255,.1); margin-bottom: 44px; }
+.kpi-num { font-family: var(--font-en); font-size: 38px; font-weight: 800; color: var(--gold); line-height: 1; }
+.kpi-unit { font-size: 16px; color: var(--gold); }
+.kpi-lbl { font-size: 11px; color: rgba(255,255,255,.45); margin-top: 5px; letter-spacing: .5px; }
+.hero-btns { display: flex; gap: 14px; }
+.btn-gold {
+  background: linear-gradient(135deg,var(--gold),var(--gold-light));
+  color: var(--navy); padding: 18px 38px; border-radius: 4px; font-weight: 700;
+  font-size: 15px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+  transition: transform .2s, box-shadow .2s; letter-spacing: .3px;
+}
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,.4); }
+.btn-ghost {
+  color: var(--white); padding: 18px 28px; border-radius: 4px; font-size: 15px;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid rgba(255,255,255,.3); transition: border-color .2s, background .2s;
+}
+.btn-ghost:hover { border-color: var(--gold); background: rgba(201,168,76,.1); }
+.scroll-hint {
+  position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  color: rgba(255,255,255,.35); font-size: 9px; letter-spacing: 3px; font-family: var(--font-en);
+}
+.scroll-bar { width: 1px; height: 36px; background: linear-gradient(to bottom,rgba(201,168,76,.7),transparent); }
+
+/* COMMONS */
+section { padding: 96px 0; }
+.container { max-width: 1160px; margin: 0 auto; padding: 0 48px; }
+.eyebrow {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-en); font-size: 11px; letter-spacing: 4px;
+  color: var(--gold); font-weight: 600; margin-bottom: 12px;
+}
+.eyebrow::before { content:''; width: 28px; height: 1px; background: var(--gold); }
+.eyebrow.center { justify-content: center; }
+.eyebrow.center::before { display: none; }
+.sec-title { font-family: var(--font-serif); font-size: 36px; font-weight: 700; color: var(--navy); line-height: 1.45; margin-bottom: 16px; }
+.sec-title.white { color: var(--white); }
+.sec-lead { font-size: 15px; color: var(--gray-600); line-height: 1.95; }
+.sec-lead.white { color: rgba(255,255,255,.65); }
+.t-gold { color: var(--gold); }
+.tc { text-align: center; }
+.tc .sec-lead { max-width: 580px; margin: 0 auto; }
+.gold-bar { width: 44px; height: 3px; background: linear-gradient(90deg,var(--gold),var(--gold-light)); margin: 20px 0; }
+.gold-bar.c { margin: 20px auto; }
+
+/* MEDIA BAR */
+.media-bar { background: var(--gray-100); border-top: 1px solid var(--gray-200); border-bottom: 1px solid var(--gray-200); padding: 24px 0; }
+.media-inner { max-width: 1160px; margin: 0 auto; padding: 0 48px; display: flex; align-items: center; gap: 40px; }
+.media-ttl { font-size: 10px; color: var(--gray-400); letter-spacing: 2.5px; font-family: var(--font-en); white-space: nowrap; }
+.media-logos { display: flex; align-items: center; gap: 36px; flex: 1; }
+.ml {
+  height: 32px; flex: 1; background: var(--gray-200); border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; color: var(--gray-400); letter-spacing: 1px; font-weight: 500;
+}
+
+/* PROBLEM */
+.problem { background: var(--white); }
+.prob-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-top: 56px; }
+.prob-photo {
+  height: 500px; border-radius: 8px; overflow: hidden; position: relative;
+  background: linear-gradient(135deg,#EEF1F7,#D0DCF0);
+  display: flex; align-items: center; justify-content: center;
+}
+.prob-photo::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 4px;
+  background: linear-gradient(90deg,var(--gold),var(--gold-light));
+}
+.ph-inner { display: flex; flex-direction: column; align-items: center; gap: 14px; opacity: .4; }
+.ph-icon-box {
+  width: 72px; height: 72px; border: 2px solid var(--gold); border-radius: 10px;
+  display: flex; align-items: center; justify-content: center; font-size: 32px;
+}
+.ph-lbl { font-size: 10px; letter-spacing: 1.5px; color: var(--gray-400); text-align: center; }
+.prob-list { display: flex; flex-direction: column; gap: 18px; }
+.prob-card {
+  display: flex; align-items: flex-start; gap: 20px;
+  padding: 22px 26px; background: var(--gray-100); border-radius: 8px;
+  border-left: 3px solid var(--gold); transition: transform .2s;
+}
+.prob-card:hover { transform: translateX(4px); }
+.prob-no { font-family: var(--font-en); font-size: 26px; font-weight: 800; color: var(--gold); opacity: .35; line-height: 1; min-width: 32px; }
+.prob-body h4 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 5px; }
+.prob-body p { font-size: 13px; color: var(--gray-600); line-height: 1.75; }
+
+/* SOLUTION */
+.solution { background: var(--navy); position: relative; overflow: hidden; }
+.solution::after {
+  content: 'SOLUTION'; position: absolute; right: -30px; bottom: -40px;
+  font-family: var(--font-en); font-size: 160px; font-weight: 900;
+  color: rgba(255,255,255,.02); pointer-events: none; white-space: nowrap;
+}
+.sol-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; margin-top: 56px; }
+.sol-card {
+  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+  border-radius: 12px; overflow: hidden; transition: border-color .3s, transform .3s;
+}
+.sol-card:hover { border-color: rgba(201,168,76,.4); transform: translateY(-4px); }
+.sol-card-img {
+  height: 210px;
+  background: linear-gradient(135deg,#1A3560,#112240);
+  display: flex; align-items: center; justify-content: center; position: relative;
+}
+.sol-num { position: absolute; bottom: 12px; right: 18px; font-family: var(--font-en); font-size: 68px; font-weight: 900; color: rgba(255,255,255,.04); line-height: 1; }
+.sol-ph { display: flex; flex-direction: column; align-items: center; gap: 10px; opacity: .35; }
+.sol-ph-icon { font-size: 42px; }
+.sol-ph-lbl { color: var(--gold); font-size: 9px; letter-spacing: 2px; font-family: var(--font-en); }
+.sol-card-body { padding: 26px 26px 30px; }
+.sol-chip {
+  display: inline-block; background: rgba(201,168,76,.12); color: var(--gold);
+  font-size: 9px; letter-spacing: 2px; padding: 4px 12px; border-radius: 100px;
+  margin-bottom: 14px; font-family: var(--font-en);
+}
+.sol-card-body h3 { font-size: 19px; font-weight: 700; color: var(--white); margin-bottom: 10px; line-height: 1.4; }
+.sol-card-body p { font-size: 13px; color: rgba(255,255,255,.58); line-height: 1.8; }
+
+/* NUMBERS */
+.nums { background: var(--gold-pale); }
+.nums-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin-top: 56px; }
+.num-card {
+  background: var(--white); padding: 44px 28px; text-align: center; position: relative;
+}
+.num-card:first-child { border-radius: 8px 0 0 8px; }
+.num-card:last-child { border-radius: 0 8px 8px 0; }
+.num-card::after { content:''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 36px; height: 3px; background: linear-gradient(90deg,var(--gold),var(--gold-light)); }
+.num-val { font-family: var(--font-en); font-size: 52px; font-weight: 800; color: var(--navy); line-height: 1; }
+.num-unit { font-size: 20px; color: var(--gold); font-weight: 700; }
+.num-lbl { font-size: 12px; color: var(--gray-600); margin-top: 12px; line-height: 1.5; }
+
+/* SERVICES */
+.svcs { background: var(--white); }
+.svc-list { margin-top: 56px; }
+.svc-row {
+  display: grid; grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--gray-200);
+}
+.svc-row:last-child { border-bottom: 1px solid var(--gray-200); }
+.svc-row.rev { direction: rtl; }
+.svc-row.rev > * { direction: ltr; }
+.svc-img {
+  height: 360px;
+  background: linear-gradient(135deg,#EEF1F7,#D0DCF0);
+  display: flex; align-items: center; justify-content: center; position: relative;
+}
+.svc-img.dk { background: linear-gradient(135deg,#112240,#1A3560); }
+.svc-img-inner { display: flex; flex-direction: column; align-items: center; gap: 12px; opacity: .38; }
+.svc-img-icon { font-size: 50px; }
+.svc-img-lbl { font-size: 10px; letter-spacing: 1.5px; color: var(--gray-400); text-align: center; }
+.svc-img.dk .svc-img-lbl { color: rgba(255,255,255,.4); }
+.svc-body { padding: 56px 52px; display: flex; flex-direction: column; justify-content: center; }
+.svc-no { font-family: var(--font-en); font-size: 10px; color: var(--gold); letter-spacing: 4px; font-weight: 600; margin-bottom: 14px; }
+.svc-body h3 { font-family: var(--font-serif); font-size: 26px; font-weight: 700; color: var(--navy); margin-bottom: 18px; line-height: 1.45; }
+.svc-body p { font-size: 14px; color: var(--gray-600); line-height: 1.9; margin-bottom: 26px; }
+.svc-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.svc-tag { background: var(--gray-100); color: var(--gray-600); font-size: 11px; padding: 5px 13px; border-radius: 100px; border: 1px solid var(--gray-200); }
+
+/* FLOW */
+.flow-sec { background: var(--gray-100); }
+.flow-steps { display: flex; gap: 0; margin-top: 56px; align-items: flex-start; position: relative; }
+.flow-steps::before {
+  content:''; position: absolute; top: 40px; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg,var(--gold),var(--gold-light),var(--gold));
+}
+.f-step { flex: 1; padding: 0 18px; text-align: center; position: relative; z-index: 1; }
+.f-circle {
+  width: 80px; height: 80px; border-radius: 50%;
+  background: linear-gradient(135deg,var(--gold),var(--gold-light));
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 22px; font-size: 26px;
+  box-shadow: 0 4px 18px rgba(201,168,76,.3);
+}
+.f-step h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 7px; }
+.f-step p { font-size: 12px; color: var(--gray-600); line-height: 1.7; }
+
+/* VOICE */
+.voice-sec { background: var(--white); }
+.voice-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; margin-top: 56px; }
+.voice-card { background: var(--gray-100); border-radius: 12px; padding: 34px 30px; position: relative; overflow: hidden; }
+.voice-card::before {
+  content:'"'; position: absolute; top: -14px; left: 18px;
+  font-family: Georgia,serif; font-size: 110px; color: var(--gold); opacity: .13; line-height: 1;
+}
+.v-stars { color: var(--gold); font-size: 14px; margin-bottom: 14px; letter-spacing: 2px; }
+.v-text { font-size: 13px; color: var(--gray-600); line-height: 1.9; margin-bottom: 22px; position: relative; z-index: 1; }
+.v-author { display: flex; align-items: center; gap: 14px; }
+.v-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: linear-gradient(135deg,var(--navy-mid),var(--navy-light));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.v-name { font-weight: 700; font-size: 13px; color: var(--navy); }
+.v-role { font-size: 11px; color: var(--gray-400); margin-top: 2px; }
+
+/* CASE */
+.case-sec { background: var(--navy); }
+.case-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 22px; margin-top: 56px; }
+.case-card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; overflow: hidden; }
+.case-img {
+  height: 250px;
+  background: linear-gradient(135deg,#1A3560,#0D2347);
+  display: flex; align-items: center; justify-content: center; position: relative;
+}
+.case-tag {
+  position: absolute; top: 18px; left: 18px;
+  background: rgba(201,168,76,.9); color: var(--navy);
+  font-size: 10px; font-weight: 700; padding: 4px 12px; border-radius: 100px;
+}
+.case-ph { display: flex; flex-direction: column; align-items: center; gap: 10px; opacity: .32; }
+.case-ph-icon { font-size: 44px; }
+.case-ph-lbl { color: var(--gold); font-size: 9px; letter-spacing: 2px; font-family: var(--font-en); }
+.case-body { padding: 26px 26px 30px; }
+.case-ind { font-size: 10px; color: var(--gold); letter-spacing: 2px; margin-bottom: 10px; font-family: var(--font-en); }
+.case-body h3 { font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 14px; line-height: 1.45; }
+.case-results { display: flex; gap: 22px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.08); }
+.cr-val { font-family: var(--font-en); font-size: 22px; font-weight: 800; color: var(--gold); }
+.cr-lbl { font-size: 10px; color: rgba(255,255,255,.45); margin-top: 2px; }
+
+/* ABOUT */
+.about-sec { background: var(--white); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; margin-top: 56px; }
+.about-img {
+  height: 520px; border-radius: 8px;
+  background: linear-gradient(135deg,#EEF1F7,#D0DCF0);
+  display: flex; align-items: center; justify-content: center; position: relative;
+}
+.about-img::after {
+  content:''; position: absolute; left: -18px; bottom: -18px;
+  width: 180px; height: 180px;
+  background: linear-gradient(135deg,var(--gold),var(--gold-light));
+  border-radius: 8px; z-index: -1;
+}
+.about-body p { font-size: 14px; color: var(--gray-600); line-height: 2; margin-bottom: 20px; }
+.about-vals { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 32px; }
+.val-card { padding: 18px; background: var(--gray-100); border-radius: 8px; border-top: 3px solid var(--gold); }
+.val-card h5 { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 5px; }
+.val-card p { font-size: 12px; color: var(--gray-600); line-height: 1.6; margin: 0; }
+
+/* TEAM */
+.team-sec { background: var(--gray-100); }
+.team-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 22px; margin-top: 56px; }
+.team-card { background: var(--white); border-radius: 12px; overflow: hidden; }
+.team-img {
+  height: 270px;
+  background: linear-gradient(135deg,#EEF1F7,#C8D5EC);
+  display: flex; align-items: center; justify-content: center;
+}
+.t-img-inner { display: flex; flex-direction: column; align-items: center; gap: 10px; opacity: .38; }
+.t-img-icon { font-size: 46px; }
+.t-img-lbl { font-size: 9px; letter-spacing: 1.5px; color: var(--gray-400); }
+.team-body { padding: 22px; }
+.t-role { font-size: 9px; color: var(--gold); letter-spacing: 2px; font-family: var(--font-en); font-weight: 600; margin-bottom: 5px; }
+.t-name { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 7px; }
+.t-bio { font-size: 11px; color: var(--gray-600); line-height: 1.7; }
+
+/* FAQ */
+.faq-sec { background: var(--white); }
+.faq-wrap { max-width: 780px; margin: 56px auto 0; }
+.faq-item { border-bottom: 1px solid var(--gray-200); }
+.faq-q {
+  display: flex; align-items: center; gap: 18px;
+  padding: 22px 0; font-size: 15px; font-weight: 600; color: var(--navy);
+}
+.faq-q-mark {
+  width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0;
+  background: linear-gradient(135deg,var(--gold),var(--gold-light));
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-en); font-weight: 800; font-size: 13px; color: var(--navy);
+}
+.faq-arr { color: var(--gold); font-size: 20px; margin-left: auto; }
+.faq-a { padding: 0 0 22px 48px; font-size: 13px; color: var(--gray-600); line-height: 1.9; }
+
+/* CTA */
+.cta-sec {
+  background: linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 50%,var(--navy-light) 100%);
+  padding: 112px 0; text-align: center; position: relative; overflow: hidden;
+}
+.cta-sec::before {
+  content:'';
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(201,168,76,.04) 1px,transparent 1px),
+                    linear-gradient(90deg,rgba(201,168,76,.04) 1px,transparent 1px);
+  background-size: 60px 60px;
+}
+.cta-inner { position: relative; z-index: 1; }
+.cta-sec h2 { font-family: var(--font-serif); font-size: 42px; font-weight: 700; color: var(--white); margin-bottom: 18px; line-height: 1.45; }
+.cta-sec h2 em { color: var(--gold); font-style: normal; }
+.cta-sec p { font-size: 16px; color: rgba(255,255,255,.68); margin-bottom: 44px; line-height: 1.85; }
+.cta-btns { display: flex; gap: 18px; justify-content: center; }
+.btn-outline-w {
+  border: 2px solid rgba(255,255,255,.35); color: var(--white);
+  padding: 18px 36px; border-radius: 4px; font-weight: 600; font-size: 15px;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+  transition: border-color .2s, color .2s;
+}
+.btn-outline-w:hover { border-color: var(--gold); color: var(--gold); }
+.cta-note { margin-top: 22px; font-size: 11px; color: rgba(255,255,255,.35); }
+
+/* FOOTER */
+footer { background: #060F1E; padding: 60px 0 0; border-top: 1px solid rgba(201,168,76,.18); }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 44px; margin-bottom: 44px; }
+.footer-brand p { font-size: 12px; color: rgba(255,255,255,.38); line-height: 1.9; margin-top: 14px; }
+.f-col h6 { font-size: 10px; letter-spacing: 2px; color: var(--gold); font-family: var(--font-en); margin-bottom: 18px; font-weight: 600; }
+.f-col a { display: block; color: rgba(255,255,255,.45); font-size: 12px; text-decoration: none; margin-bottom: 10px; transition: color .2s; }
+.f-col a:hover { color: var(--gold); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,.06); padding: 22px 0;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-bottom p { font-size: 11px; color: rgba(255,255,255,.28); }
+.f-links { display: flex; gap: 22px; }
+.f-links a { font-size: 11px; color: rgba(255,255,255,.28); text-decoration: none; }
+.f-links a:hover { color: var(--gold); }
+
+/* FLOAT BTN */
+.float-cta {
+  position: fixed; bottom: 28px; right: 28px; z-index: 999;
+  background: linear-gradient(135deg,var(--gold),var(--gold-light));
+  color: var(--navy); padding: 14px 24px; border-radius: 50px;
+  font-weight: 700; font-size: 13px; text-decoration: none;
+  box-shadow: 0 8px 28px rgba(201,168,76,.42);
+  display: flex; align-items: center; gap: 8px;
+  transition: transform .2s, box-shadow .2s;
+}
+.float-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(201,168,76,.5); }
+</style>
+</head>
+<body>
+
+<!-- FLOAT -->
+<a href="#cta" class="float-cta">📞 無料相談を予約する</a>
+
+<!-- HEADER -->
+<header>
+  <a href="#" class="logo">
+    <div class="logo-mark">N</div>
+    <div>
+      <div class="logo-name">NEXUS FINANCE</div>
+      <span class="logo-sub">STRATEGIC ASSET MANAGEMENT</span>
+    </div>
+  </a>
+  <nav>
+    <a href="#problem">お悩み</a>
+    <a href="#services">サービス</a>
+    <a href="#case">実績</a>
+    <a href="#about">私たちについて</a>
+    <a href="#faq">FAQ</a>
+    <a href="#cta" class="nav-cta">無料相談を予約する →</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-right">
+    <div class="hero-photo">
+      <div class="hero-photo-inner">
+        <div class="photo-frame">🏙️</div>
+        <div class="photo-label">受領資料を差し込み予定<br>（メインビジュアル）</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <div class="badge-dot"></div>
+      <span class="badge-text">TRUSTED FINANCIAL PARTNER</span>
+    </div>
+    <div class="hero-en">ASSET STRATEGY CONSULTING</div>
+    <h1 class="hero-h1">
+      あなたの資産を、<br>
+      <em>戦略的に</em>育てる。
+    </h1>
+    <p class="hero-lead">
+      複雑化する経済環境の中で、本当に信頼できる<br>
+      パートナーがいますか？私たちは30年の実績と<br>
+      専門知識で、あなただけの資産戦略を設計します。
+    </p>
+    <div class="hero-kpis">
+      <div>
+        <div class="kpi-num">2,400<span class="kpi-unit">+</span></div>
+        <div class="kpi-lbl">累計相談件数</div>
+      </div>
+      <div>
+        <div class="kpi-num">98<span class="kpi-unit">%</span></div>
+        <div class="kpi-lbl">顧客満足度</div>
+      </div>
+      <div>
+        <div class="kpi-num">30<span class="kpi-unit">年</span></div>
+        <div class="kpi-lbl">業界経験</div>
+      </div>
+    </div>
+    <div class="hero-btns">
+      <a href="#cta" class="btn-gold">無料相談を予約する →</a>
+      <a href="#services" class="btn-ghost">サービスを見る</a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-bar"></div>
+    <span>SCROLL</span>
+  </div>
+</section>
+
+<!-- MEDIA BAR -->
+<div class="media-bar">
+  <div class="media-inner">
+    <span class="media-ttl">MEDIA &amp; CERTIFICATION</span>
+    <div class="media-logos">
+      <div class="ml">日経新聞</div>
+      <div class="ml">東洋経済</div>
+      <div class="ml">金融庁登録</div>
+      <div class="ml">Forbes Japan</div>
+      <div class="ml">IFA認定</div>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem" id="problem">
+  <div class="container">
+    <div class="eyebrow">PROBLEM</div>
+    <h2 class="sec-title">こんなお悩みを<br>抱えていませんか？</h2>
+    <div class="prob-grid">
+      <div class="prob-photo">
+        <div class="ph-inner">
+          <div class="ph-icon-box">📊</div>
+          <div class="ph-lbl">受領資料を差し込み予定<br>（問題提起イメージ）</div>
+        </div>
+      </div>
+      <div class="prob-list">
+        <div class="prob-card">
+          <div class="prob-no">01</div>
+          <div class="prob-body">
+            <h4>何から始めれば良いかわからない</h4>
+            <p>投資・保険・節税など選択肢が多すぎて、どの順番で取り組むべきか判断できない。</p>
+          </div>
+        </div>
+        <div class="prob-card">
+          <div class="prob-no">02</div>
+          <div class="prob-body">
+            <h4>本当に信頼できる専門家が見つからない</h4>
+            <p>金融商品を売りたいだけのアドバイザーではなく、中立的に相談できる存在が必要。</p>
+          </div>
+        </div>
+        <div class="prob-card">
+          <div class="prob-no">03</div>
+          <div class="prob-body">
+            <h4>資産が思うように増えていない</h4>
+            <p>預金しているだけでは将来が不安。でも自分で運用すると失敗するリスクが怖い。</p>
+          </div>
+        </div>
+        <div class="prob-card">
+          <div class="prob-no">04</div>
+          <div class="prob-body">
+            <h4>事業と個人の資産管理が混在している</h4>
+            <p>経営者として会社と個人の財務を切り分け、最適化する方法がわからない。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="solution" id="services">
+  <div class="container">
+    <div class="eyebrow" style="color:var(--gold)">SOLUTION</div>
+    <h2 class="sec-title white">私たちが提供する、<br><span class="t-gold">3つの解決策</span></h2>
+    <p class="sec-lead white" style="max-width:560px; margin-top:12px;">ライフステージや資産規模に応じて、あなただけの戦略を策定。一貫したサポート体制で長期的な資産形成を実現します。</p>
+    <div class="sol-cards">
+      <div class="sol-card">
+        <div class="sol-card-img">
+          <div class="sol-num">01</div>
+          <div class="sol-ph">
+            <div class="sol-ph-icon">💼</div>
+            <div class="sol-ph-lbl">受領資料を差し込み予定</div>
+          </div>
+        </div>
+        <div class="sol-card-body">
+          <div class="sol-chip">ASSET PLANNING</div>
+          <h3>総合資産設計</h3>
+          <p>現状の資産・負債・キャッシュフローを可視化し、10年・20年単位の財務ロードマップを共同設計します。</p>
+        </div>
+      </div>
+      <div class="sol-card">
+        <div class="sol-card-img">
+          <div class="sol-num">02</div>
+          <div class="sol-ph">
+            <div class="sol-ph-icon">📈</div>
+            <div class="sol-ph-lbl">受領資料を差し込み予定</div>
+          </div>
+        </div>
+        <div class="sol-card-body">
+          <div class="sol-chip">INVESTMENT</div>
+          <h3>ポートフォリオ最適化</h3>
+          <p>リスク許容度に基づき国内外の資産クラスを組み合わせた最適なポートフォリオを構築・管理します。</p>
+        </div>
+      </div>
+      <div class="sol-card">
+        <div class="sol-card-img">
+          <div class="sol-num">03</div>
+          <div class="sol-ph">
+            <div class="sol-ph-icon">🏛️</div>
+            <div class="sol-ph-lbl">受領資料を差し込み予定</div>
+          </div>
+        </div>
+        <div class="sol-card-body">
+          <div class="sol-chip">TAX &amp; SUCCESSION</div>
+          <h3>節税・事業承継支援</h3>
+          <p>経営者向けに特化した税務最適化と、次世代への円滑な事業・資産承継プランを策定します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<section class="nums">
+  <div class="container">
+    <div class="tc">
+      <div class="eyebrow center">TRACK RECORD</div>
+      <h2 class="sec-title">数字で見る、私たちの実績</h2>
+    </div>
+    <div class="nums-grid">
+      <div class="num-card">
+        <div class="num-val">2,400<span class="num-unit">+</span></div>
+        <div class="num-lbl">累計相談件数<br>（法人・個人）</div>
+      </div>
+      <div class="num-card">
+        <div class="num-val">98<span class="num-unit">%</span></div>
+        <div class="num-lbl">顧客満足度<br>（2025年実績）</div>
+      </div>
+      <div class="num-card">
+        <div class="num-val">500<span class="num-unit">億</span></div>
+        <div class="num-lbl">運用資産総額<br>（累計）</div>
+      </div>
+      <div class="num-card">
+        <div class="num-val">30<span class="num-unit">年</span></div>
+        <div class="num-lbl">平均業界経験<br>（担当者）</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES DETAIL -->
+<section class="svcs">
+  <div class="container">
+    <div class="eyebrow">OUR SERVICES</div>
+    <h2 class="sec-title">サービス詳細</h2>
+    <div class="svc-list">
+      <div class="svc-row">
+        <div class="svc-img">
+          <div class="svc-img-inner">
+            <div class="svc-img-icon">🗂️</div>
+            <div class="svc-img-lbl">受領資料を差し込み予定</div>
+          </div>
+        </div>
+        <div class="svc-body">
+          <div class="svc-no">SERVICE 01</div>
+          <h3>ファイナンシャル<br>プランニング</h3>
+          <p>ライフプランに基づいた中長期の資産形成計画を策定。収支の最適化から教育資金・老後資金の準備まで、トータルでサポートします。</p>
+          <div class="svc-tags">
+            <span class="svc-tag">老後資金設計</span>
+            <span class="svc-tag">教育資金</span>
+            <span class="svc-tag">住宅資金</span>
+            <span class="svc-tag">キャッシュフロー</span>
+          </div>
+        </div>
+      </div>
+      <div class="svc-row rev">
+        <div class="svc-img dk">
+          <div class="svc-img-inner">
+            <div class="svc-img-icon" style="opacity:.5">📊</div>
+            <div class="svc-img-lbl">受領資料を差し込み予定</div>
+          </div>
+        </div>
+        <div class="svc-body">
+          <div class="svc-no">SERVICE 02</div>
+          <h3>資産運用<br>コンサルティング</h3>
+          <p>国内外の株式・債券・不動産・オルタナティブ投資を活用した分散ポートフォリオを構築。市場変動に強い安定的な運用を実現します。</p>
+          <div class="svc-tags">
+            <span class="svc-tag">株式投資</span>
+            <span class="svc-tag">不動産投資</span>
+            <span class="svc-tag">投資信託</span>
+            <span class="svc-tag">NISA/iDeCo</span>
+          </div>
+        </div>
+      </div>
+      <div class="svc-row">
+        <div class="svc-img">
+          <div class="svc-img-inner">
+            <div class="svc-img-icon">⚖️</div>
+            <div class="svc-img-lbl">受領資料を差し込み予定</div>
+          </div>
+        </div>
+        <div class="svc-body">
+          <div class="svc-no">SERVICE 03</div>
+          <h3>事業承継・<br>相続対策</h3>
+          <p>中小企業オーナー向けに、後継者への円滑な事業承継と相続税対策を一体設計。法人・個人の最適な財産移転スキームを構築します。</p>
+          <div class="svc-tags">
+            <span class="svc-tag">相続税対策</span>
+            <span class="svc-tag">株式移転</span>
+            <span class="svc-tag">事業承継</span>
+            <span class="svc-tag">遺産分割</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLOW -->
+<section class="flow-sec" id="flow">
+  <div class="container">
+    <div class="tc">
+      <div class="eyebrow center">HOW IT WORKS</div>
+      <h2 class="sec-title">ご相談の流れ</h2>
+      <p class="sec-lead">初回相談から実行・フォローアップまで、一貫したサポートを提供します。</p>
+    </div>
+    <div class="flow-steps">
+      <div class="f-step">
+        <div class="f-circle">📋</div>
+        <h4>初回無料相談</h4>
+        <p>現状のヒアリングとお悩みの整理。約60分のオンライン面談。</p>
+      </div>
+      <div class="f-step">
+        <div class="f-circle">🔍</div>
+        <h4>現状分析・診断</h4>
+        <p>資産・負債・収支を可視化。課題と機会を明確化します。</p>
+      </div>
+      <div class="f-step">
+        <div class="f-circle">📐</div>
+        <h4>戦略立案</h4>
+        <p>お客様専用の財務ロードマップと実行プランを策定します。</p>
+      </div>
+      <div class="f-step">
+        <div class="f-circle">🚀</div>
+        <h4>実行サポート</h4>
+        <p>各種手続き・口座開設・商品選定を伴走サポートします。</p>
+      </div>
+      <div class="f-step">
+        <div class="f-circle">🔄</div>
+        <h4>定期レビュー</h4>
+        <p>四半期ごとに進捗確認・プランの見直しを行います。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE -->
+<section class="case-sec" id="case">
+  <div class="container">
+    <div class="eyebrow" style="color:var(--gold)">CASE STUDY</div>
+    <h2 class="sec-title white">お客様の成功事例</h2>
+    <p class="sec-lead white" style="max-width:520px; margin-top:10px;">様々なライフステージのお客様の資産形成・財務改善を実現してきました。</p>
+    <div class="case-grid">
+      <div class="case-card">
+        <div class="case-img">
+          <div class="case-tag">個人資産形成</div>
+          <div class="case-ph">
+            <div class="case-ph-icon">👔</div>
+            <div class="case-ph-lbl">受領資料を差し込み予定</div>
+          </div>
+        </div>
+        <div class="case-body">
+          <div class="case-ind">CASE 01 ／ 会社員・40代</div>
+          <h3>分散投資の導入で、5年間で資産を2.3倍に拡大</h3>
+          <div class="case-results">
+            <div><div class="cr-val">+130%</div><div class="cr-lbl">資産増加率（5年）</div></div>
+            <div><div class="cr-val">¥4,200万</div><div class="cr-lbl">達成資産額</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-img">
+          <div class="case-tag">事業承継・相続</div>
+          <div class="case-ph">
+            <div class="case-ph-icon">🏢</div>
+            <div class="case-ph-lbl">受領資料を差し込み予定</div>
+          </div>
+        </div>
+        <div class="case-body">
+          <div class="case-ind">CASE 02 ／ 中小企業経営者・50代</div>
+          <h3>事業承継と相続税対策を同時実施、節税額1.2億円を実現</h3>
+          <div class="case-results">
+            <div><div class="cr-val">¥1.2億</div><div class="cr-lbl">節税効果</div></div>
+            <div><div class="cr-val">3年</div><div class="cr-lbl">承継完了期間</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-img">
+          <div class="case-tag">老後設計</div>
+          <div class="case-ph">
+            <div class="case-ph-icon">🌅</div>
+            <div class="case-ph-lbl">受領資料を差し込み予定</div>
+          </div>
+        </div>
+        <div class="case-body">
+          <div class="case-ind">CASE 03 ／ 医師・45代</div>
+          <h3>開業医の収入を最大活用し老後2億円の資産形成プランを確立</h3>
+          <div class="case-results">
+            <div><div class="cr-val">¥2億</div><div class="cr-lbl">目標資産額</div></div>
+            <div><div class="cr-val">-38%</div><div class="cr-lbl">実効税率削減</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-img">
+          <div class="case-tag">ポートフォリオ</div>
+          <div class="case-ph">
+            <div class="case-ph-icon">📈</div>
+            <div class="case-ph-lbl">受領資料を差し込み予定</div>
+          </div>
+        </div>
+        <div class="case-body">
+          <div class="case-ind">CASE 04 ／ 外資系役員・38歳</div>
+          <h3>ストックオプション行使後の資産をグローバル分散で安全運用</h3>
+          <div class="case-results">
+            <div><div class="cr-val">+8.2%</div><div class="cr-lbl">年間リターン</div></div>
+            <div><div class="cr-val">-62%</div><div class="cr-lbl">ポートフォリオリスク</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOICE -->
+<section class="voice-sec">
+  <div class="container">
+    <div class="tc">
+      <div class="eyebrow center">TESTIMONIALS</div>
+      <h2 class="sec-title">お客様の声</h2>
+    </div>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <div class="v-stars">★★★★★</div>
+        <p class="v-text">以前は投資に対して漠然とした不安がありましたが、担当者が丁寧にリスクを説明してくれ、自分に合ったプランを設計してもらえました。今では資産が着実に増えており、安心感が全く違います。</p>
+        <div class="v-author">
+          <div class="v-avatar">👨‍💼</div>
+          <div>
+            <div class="v-name">T.M様</div>
+            <div class="v-role">大手商社 部長・46歳</div>
+          </div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="v-stars">★★★★★</div>
+        <p class="v-text">会社の事業承継と個人の相続対策を一緒に相談できる場所を探していました。税理士との連携もスムーズで、想定以上の節税効果が得られました。もっと早く相談すれば良かったです。</p>
+        <div class="v-author">
+          <div class="v-avatar">🏢</div>
+          <div>
+            <div class="v-name">K.S様</div>
+            <div class="v-role">製造業 代表取締役・54歳</div>
+          </div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="v-stars">★★★★★</div>
+        <p class="v-text">複数の金融機関に相談しましたが、ここが一番中立的なアドバイスをくれました。自社商品を押しつけず、本当に自分のためを考えてくれているのが伝わります。信頼できる相談相手です。</p>
+        <div class="v-author">
+          <div class="v-avatar">⚕️</div>
+          <div>
+            <div class="v-name">H.Y様</div>
+            <div class="v-role">開業医・41歳</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-sec" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img">
+        <div class="ph-inner">
+          <div class="ph-icon-box" style="width:80px;height:80px;font-size:36px;">🏛️</div>
+          <div class="ph-lbl">受領資料を差し込み予定<br>（オフィス・代表者写真）</div>
+        </div>
+      </div>
+      <div class="about-body">
+        <div class="eyebrow">ABOUT US</div>
+        <h2 class="sec-title">私たちについて</h2>
+        <div class="gold-bar"></div>
+        <p>NEXUS FINANCEは2005年の創業以来、「金融の民主化」をミッションに、富裕層・経営者・専門職の方々の資産形成をサポートしてきました。</p>
+        <p>私たちは特定の金融機関から独立した独立系ファイナンシャルアドバイザー（IFA）として、お客様の利益を最優先に、中立的なアドバイスを提供します。</p>
+        <p>金融庁登録の投資助言業者として、高い専門性と倫理基準のもと、長期的なパートナーシップを築いてまいります。</p>
+        <div class="about-vals">
+          <div class="val-card"><h5>独立性</h5><p>特定の金融機関に属さない中立的なアドバイスを提供</p></div>
+          <div class="val-card"><h5>透明性</h5><p>料金体系・運用状況を常に明確にご説明します</p></div>
+          <div class="val-card"><h5>専門性</h5><p>CFP・税理士・弁護士との強固な専門家ネットワーク</p></div>
+          <div class="val-card"><h5>継続性</h5><p>担当者制による長期的な伴走サポートを実現</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team-sec">
+  <div class="container">
+    <div class="tc">
+      <div class="eyebrow center">OUR TEAM</div>
+      <h2 class="sec-title">専門家チーム</h2>
+      <p class="sec-lead">それぞれの分野に精通したプロフェッショナルが<br>チームでお客様の資産を守ります。</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-img">
+          <div class="t-img-inner">
+            <div class="t-img-icon">👔</div>
+            <div class="t-img-lbl">受領資料を差し込み予定</div>
+          </div>
+        </div>
+        <div class="team-body">
+          <div class="t-role">REPRESENTATIVE</div>
+          <div class="t-name">山田 誠一郎</div>
+          <div class="t-bio">元大手証券会社で20年のキャリア。CFP・1級FP技能士。2005年に独立し代表就任。</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-img">
+          <div class="t-img-inner">
+            <div class="t-img-icon">👨‍💼</div>
+            <div class="t-img-lbl">受領資料を差し込み予定</div>
+          </div>
+        </div>
+        <div class="team-body">
+          <div class="t-role">INVESTMENT ADVISOR</div>
+          <div class="t-name">鈴木 健太</div>
+          <div class="t-bio">外資系投資銀行出身。グローバルポートフォリオ構築に15年の専門経験を持つ。</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-img">
+          <div class="t-img-inner">
+            <div class="t-img-icon">👨‍⚖️</div>
+            <div class="t-img-lbl">受領資料を差し込み予定</div>
+          </div>
+        </div>
+        <div class="team-body">
+          <div class="t-role">TAX SPECIALIST</div>
+          <div class="t-name">田中 修</div>
+          <div class="t-bio">税理士・事業承継士。中小企業の節税・相続対策を専門に18年のキャリア。</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-img">
+          <div class="t-img-inner">
+            <div class="t-img-icon">👨‍💻</div>
+            <div class="t-img-lbl">受領資料を差し込み予定</div>
+          </div>
+        </div>
+        <div class="team-body">
+          <div class="t-role">FINANCIAL PLANNER</div>
+          <div class="t-name">佐藤 雅之</div>
+          <div class="t-bio">CFP・証券アナリスト。個人資産形成から法人財務まで幅広く対応。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-sec" id="faq">
+  <div class="container">
+    <div class="tc">
+      <div class="eyebrow center">FAQ</div>
+      <h2 class="sec-title">よくあるご質問</h2>
+    </div>
+    <div class="faq-wrap">
+      <div class="faq-item">
+        <div class="faq-q"><div class="faq-q-mark">Q</div>初回相談は本当に無料ですか？<span class="faq-arr">›</span></div>
+        <div class="faq-a">はい、初回60分のご相談は完全無料です。現状のヒアリングとご要望の整理を行い、弊社サービスがお役に立てるかどうかをご確認いただいてから、契約のご検討をいただけます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><div class="faq-q-mark">Q</div>どのくらいの資産規模から相談できますか？<span class="faq-arr">›</span></div>
+        <div class="faq-a">資産規模に下限は設けておりません。ただし、ご相談内容によっては弊社よりも適切なサービスをご紹介させていただく場合がございます。まずはお気軽にご相談ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><div class="faq-q-mark">Q</div>相談はオンラインでも可能ですか？<span class="faq-arr">›</span></div>
+        <div class="faq-a">はい、ZoomやTeamsを使ったオンライン面談に対応しております。全国どこからでもご相談いただけます。対面希望の方は東京・大阪・名古屋のオフィスでもお受けしております。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><div class="faq-q-mark">Q</div>特定の金融商品を勧めてくる形ですか？<span class="faq-arr">›</span></div>
+        <div class="faq-a">いいえ。弊社は独立系IFAとして、特定の金融機関・商品に縛られない中立的な立場でアドバイスをご提供しています。お客様の利益を最優先に、最適な選択肢をご提案します。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><div class="faq-q-mark">Q</div>費用はどのくらいかかりますか？<span class="faq-arr">›</span></div>
+        <div class="faq-a">ご相談内容・サービス内容によって異なります。月額顧問型、成果報酬型、プロジェクト型など柔軟にご対応しております。詳細は初回面談にてご説明いたします。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec" id="cta">
+  <div class="cta-inner">
+    <div class="eyebrow center" style="color:var(--gold);justify-content:center">FREE CONSULTATION</div>
+    <h2>今すぐ、<em>無料相談</em>を予約する</h2>
+    <p>あなたの資産戦略、一度プロの目で見てみませんか？<br>60分の無料相談で、現状の課題と改善策を明確にします。</p>
+    <div class="cta-btns">
+      <a href="#" class="btn-gold" style="padding:20px 48px;font-size:16px;">無料相談を予約する（60分）→</a>
+      <a href="#" class="btn-outline-w">資料を請求する</a>
+    </div>
+    <p class="cta-note">※ 完全無料・勧誘一切なし ／ オンライン対応可 ／ 全国どこからでも相談可</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-mark">N</div>
+          <div>
+            <div class="logo-name" style="font-size:17px;">NEXUS FINANCE</div>
+            <span class="logo-sub">STRATEGIC ASSET MANAGEMENT</span>
+          </div>
+        </div>
+        <p>金融庁登録 投資助言業者<br>登録番号：関東財務局長（投）第○○○○号<br><br>〒100-0005 東京都千代田区丸の内1-X-X<br>TEL: 03-XXXX-XXXX</p>
+      </div>
+      <div class="f-col">
+        <h6>SERVICES</h6>
+        <a href="#">ファイナンシャルプランニング</a>
+        <a href="#">資産運用コンサルティング</a>
+        <a href="#">事業承継・相続対策</a>
+        <a href="#">法人財務コンサルティング</a>
+      </div>
+      <div class="f-col">
+        <h6>COMPANY</h6>
+        <a href="#">会社概要</a>
+        <a href="#">チーム紹介</a>
+        <a href="#">採用情報</a>
+        <a href="#">ニュース</a>
+      </div>
+      <div class="f-col">
+        <h6>SUPPORT</h6>
+        <a href="#">よくある質問</a>
+        <a href="#">お問い合わせ</a>
+        <a href="#">プライバシーポリシー</a>
+        <a href="#">特定商取引法</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 NEXUS FINANCE Inc. All Rights Reserved.</p>
+      <div class="f-links">
+        <a href="#">プライバシーポリシー</a>
+        <a href="#">利用規約</a>
+        <a href="#">免責事項</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
